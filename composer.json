@@ -1,0 +1,21 @@
+{
+    "name": "ngatngay/nette-form-captcha",
+    "description": "Nette Form Captcha",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "NgatNgay",
+            "email": "pmt.coder@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "nette/nette": ">=3.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}

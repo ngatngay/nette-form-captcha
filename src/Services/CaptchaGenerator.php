@@ -1,0 +1,29 @@
+<?php
+
+    namespace NgatNgay\NetteFormCaptcha\Services;
+
+    use NgatNgay\NetteFormCaptcha\Question\CaptchaQuestionFactory;
+
+    final class CaptchaGenerator
+    {
+        public function __construct(
+            private CaptchaQuestionFactory $captchaQuestionFactory
+        )
+        {
+        }
+
+        public function generate(): CaptchaGenerated
+        {
+            $captcha  = $this->captchaQuestionFactory->get();
+
+            $question = $captcha->getQuestion();
+            $hash     = $this->hash($captcha->getAnswer());
+
+            return new CaptchaGenerated($question, $hash);
+        }
+
+        public function hash(string $answer): string
+        {
+            return sha1(strtolower($answer));
+        }
+    }
