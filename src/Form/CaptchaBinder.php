@@ -1,9 +1,9 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha\Form;
+namespace NgatNgay\NetteFormCaptcha\Form;
 
-    use NgatNgay\NetteFormCaptcha\CaptchaFactory;
     use Nette\Forms\Container;
+    use NgatNgay\NetteFormCaptcha\CaptchaFactory;
 
     final class CaptchaBinder
     {
@@ -13,8 +13,8 @@
                 'addCaptcha',
                 function (
                     Container $container,
-                    string    $name,
-                    string    $requireMessage
+                    string $name,
+                    string $requireMessage
                 ) use ($factory): CaptchaContainer {
                     $captcha = $container[$name] = new CaptchaContainer($factory);
                     $captcha->setRequired($requireMessage);

@@ -1,6 +1,6 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha\Question;
+namespace NgatNgay\NetteFormCaptcha\Question;
 
     class CaptchaQuestionNumeric implements CaptchaQuestionFactory
     {
@@ -10,12 +10,12 @@
             $numberB = $this->generateNumber();
 
             $question = sprintf('%s + %s', $numberA, $numberB);
-            $answer   = $numberA + $numberB;
+            $answer = $numberA + $numberB;
 
             return new CaptchaQuestionData(
                 CaptchaQuestionData::NUMERIC,
                 $question,
-                (string)$answer
+                (string) $answer
             );
         }
 

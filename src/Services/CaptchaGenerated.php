@@ -1,6 +1,6 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha\Services;
+namespace NgatNgay\NetteFormCaptcha\Services;
 
     final class CaptchaGenerated
     {
@@ -8,8 +8,7 @@
             private string $type,
             private string $question,
             private string $hash
-        )
-        {
+        ) {
         }
 
         public function getType(): string

@@ -1,15 +1,15 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha\Form;
+namespace NgatNgay\NetteFormCaptcha\Form;
 
+    use Nette\Forms\Container;
+    use Nette\Forms\Controls\HiddenField;
+    use Nette\Forms\Controls\TextInput;
     use Nette\Utils\Html;
     use NgatNgay\NetteFormCaptcha\CaptchaFactory;
     use NgatNgay\NetteFormCaptcha\Question\CaptchaQuestionData;
     use NgatNgay\NetteFormCaptcha\Services\CaptchaGenerator;
     use NgatNgay\NetteFormCaptcha\Services\CaptchaValidator;
-    use Nette\Forms\Container;
-    use Nette\Forms\Controls\HiddenField;
-    use Nette\Forms\Controls\TextInput;
 
     class CaptchaContainer extends Container
     {
@@ -20,7 +20,7 @@
         {
             $this->generator = $factory->createGenerator();
             $this->validator = $factory->createValidator();
-            $question        = $this->generator->generate();
+            $question = $this->generator->generate();
 
             // question label
             $questionLabel = match ($question->getType()) {
@@ -36,7 +36,7 @@
             $hiddenField = new HiddenField($question->getHash());
 
             $this['question'] = $textInput;
-            $this['hash']     = $hiddenField;
+            $this['hash'] = $hiddenField;
         }
 
         public function getQuestion(): TextInput
@@ -57,16 +57,14 @@
 
         public function setRequired($message): TextInput
         {
-            return $this->addRule(function (): bool {
-                return $this->verify() === true;
-            }, $message);
+            return $this->addRule(fn(): bool => true === $this->verify(), $message);
         }
 
         public function verify(): bool
         {
-            $form   = $this->getForm(true);
+            $form = $this->getForm(true);
             $answer = $form->getHttpData($form::DATA_LINE, $this->getQuestion()->getHtmlName());
-            $hash   = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
+            $hash = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
 
             return $this->validator->validate($answer, $hash);
         }

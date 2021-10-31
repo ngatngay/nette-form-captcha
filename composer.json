@@ -11,8 +11,9 @@
     ],
     "require": {
         "php": ">=8.0",
-        "nette/nette": ">=3.0",
-        "gregwar/captcha": "*"
+        "gregwar/captcha": "*",
+        "nette/di": "^3.0",
+        "nette/forms": "^3.1"
     },
     "autoload": {
         "classmap": [

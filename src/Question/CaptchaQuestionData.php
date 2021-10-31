@@ -1,20 +1,18 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha\Question;
+namespace NgatNgay\NetteFormCaptcha\Question;
 
     final class CaptchaQuestionData
     {
-        const NUMERIC = 'numeric';
-        const TEXT    = 'text';
-        const IMAGE   = 'image';
-
+        public const NUMERIC = 'numeric';
+        public const TEXT = 'text';
+        public const IMAGE = 'image';
 
         public function __construct(
             public string $type,
             public string $question,
             public string $answer
-        )
-        {
+        ) {
         }
 
         public function getType(): string

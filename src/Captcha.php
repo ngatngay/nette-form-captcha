@@ -1,6 +1,6 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha;
+namespace NgatNgay\NetteFormCaptcha;
 
     use NgatNgay\NetteFormCaptcha\Question\CaptchaQuestionFactory;
     use NgatNgay\NetteFormCaptcha\Services\CaptchaGenerator;
@@ -10,8 +10,7 @@
     {
         public function __construct(
             private CaptchaQuestionFactory $captchaQuestionFactory
-        )
-        {
+        ) {
         }
 
         public function createValidator(): CaptchaValidator
