@@ -1,6 +1,6 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha\Question;
+namespace NgatNgay\NetteFormCaptcha\Question;
 
     interface CaptchaQuestionFactory
     {

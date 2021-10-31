@@ -1,6 +1,6 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha\Services;
+namespace NgatNgay\NetteFormCaptcha\Services;
 
     use NgatNgay\NetteFormCaptcha\Question\CaptchaQuestionFactory;
 
@@ -8,13 +8,12 @@
     {
         public function __construct(
             private CaptchaQuestionFactory $captchaQuestionFactory
-        )
-        {
+        ) {
         }
 
         public function generate(): CaptchaGenerated
         {
-            $captcha  = $this->captchaQuestionFactory->get();
+            $captcha = $this->captchaQuestionFactory->get();
 
             return new CaptchaGenerated(
                 $captcha->getType(),

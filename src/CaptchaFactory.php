@@ -1,6 +1,6 @@
 <?php
 
-    namespace NgatNgay\NetteFormCaptcha;
+namespace NgatNgay\NetteFormCaptcha;
 
     use NgatNgay\NetteFormCaptcha\Services\CaptchaGenerator;
     use NgatNgay\NetteFormCaptcha\Services\CaptchaValidator;
