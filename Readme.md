@@ -54,3 +54,4 @@ public function createComponentForm()
 
 ## Example
 
+![image](https://raw.githubusercontent.com/ngatngay/nette-form-captcha/master/screenshot.png)
