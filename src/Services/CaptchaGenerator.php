@@ -16,10 +16,11 @@
         {
             $captcha  = $this->captchaQuestionFactory->get();
 
-            $question = $captcha->getQuestion();
-            $hash     = $this->hash($captcha->getAnswer());
-
-            return new CaptchaGenerated($question, $hash);
+            return new CaptchaGenerated(
+                $captcha->getType(),
+                $captcha->getQuestion(),
+                $this->hash($captcha->getAnswer())
+            );
         }
 
         public function hash(string $answer): string

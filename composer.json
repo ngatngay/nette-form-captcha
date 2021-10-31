@@ -1,7 +1,7 @@
 {
     "name": "ngatngay/nette-form-captcha",
     "description": "Nette Form Captcha",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
         {
@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=8.0",
-        "nette/nette": ">=3.0"
+        "nette/nette": ">=3.0",
+        "gregwar/captcha": "*"
     },
     "autoload": {
         "classmap": [

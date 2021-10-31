@@ -23,6 +23,7 @@
             $answer   = $this->questions[$question];
 
             return new CaptchaQuestionData(
+                CaptchaQuestionData::TEXT,
                 $question,
                 $answer
             );

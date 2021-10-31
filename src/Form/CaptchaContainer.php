@@ -2,7 +2,9 @@
 
     namespace NgatNgay\NetteFormCaptcha\Form;
 
+    use Nette\Utils\Html;
     use NgatNgay\NetteFormCaptcha\CaptchaFactory;
+    use NgatNgay\NetteFormCaptcha\Question\CaptchaQuestionData;
     use NgatNgay\NetteFormCaptcha\Services\CaptchaGenerator;
     use NgatNgay\NetteFormCaptcha\Services\CaptchaValidator;
     use Nette\Forms\Container;
@@ -11,21 +13,27 @@
 
     class CaptchaContainer extends Container
     {
-        private CaptchaValidator $validator;
         private CaptchaGenerator $generator;
+        private CaptchaValidator $validator;
 
         public function __construct(CaptchaFactory $factory)
         {
             $this->generator = $factory->createGenerator();
             $this->validator = $factory->createValidator();
-            $security        = $this->generator->generate();
+            $question        = $this->generator->generate();
 
-            // question
-            $textInput = new TextInput($security->getQuestion());
+            // question label
+            $questionLabel = match ($question->getType()) {
+                CaptchaQuestionData::IMAGE => Html::el('img')->src($question->getQuestion()),
+                default => $question->getQuestion(),
+            };
+
+            // question display
+            $textInput = new TextInput($questionLabel);
             $textInput->setRequired(true);
 
             // anwser hash
-            $hiddenField = new HiddenField($security->getHash());
+            $hiddenField = new HiddenField($question->getHash());
 
             $this['question'] = $textInput;
             $this['hash']     = $hiddenField;
@@ -57,8 +65,6 @@
         public function verify(): bool
         {
             $form   = $this->getForm(true);
-            assert($form !== null);
-
             $answer = $form->getHttpData($form::DATA_LINE, $this->getQuestion()->getHtmlName());
             $hash   = $form->getHttpData($form::DATA_LINE, $this->getHash()->getHtmlName());
 

@@ -13,6 +13,7 @@
             $answer   = $numberA + $numberB;
 
             return new CaptchaQuestionData(
+                CaptchaQuestionData::NUMERIC,
                 $question,
                 (string)$answer
             );

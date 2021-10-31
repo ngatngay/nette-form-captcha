@@ -4,11 +4,22 @@
 
     final class CaptchaQuestionData
     {
+        const NUMERIC = 'numeric';
+        const TEXT    = 'text';
+        const IMAGE   = 'image';
+
+
         public function __construct(
+            public string $type,
             public string $question,
             public string $answer
         )
         {
+        }
+
+        public function getType(): string
+        {
+            return $this->type;
         }
 
         public function getQuestion(): string
