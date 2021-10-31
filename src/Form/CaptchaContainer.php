@@ -57,9 +57,7 @@ namespace NgatNgay\NetteFormCaptcha\Form;
 
         public function setRequired($message): TextInput
         {
-            return $this->addRule(function (): bool {
-                return true === $this->verify();
-            }, $message);
+            return $this->addRule(fn(): bool => true === $this->verify(), $message);
         }
 
         public function verify(): bool

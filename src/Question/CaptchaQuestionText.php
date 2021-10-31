@@ -13,7 +13,7 @@ namespace NgatNgay\NetteFormCaptcha\Question;
 
         public function get(): CaptchaQuestionData
         {
-            if (empty($this->questions)) {
+            if ($this->questions === []) {
                 throw new InvalidArgumentException('Question empty');
             }
 
